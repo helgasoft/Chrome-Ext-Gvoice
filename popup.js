@@ -12,13 +12,17 @@ document.addEventListener('DOMContentLoaded', function() {
 "		photoDivs = msgs[i].getElementsByClassName('md-body-1'); " +
 "		for(var j in photoDivs) { if (!photoDivs[j].getElementsByTagName) continue;" +
 "			arr.push('https://' + window.location.hostname + photoDivs[j].getElementsByTagName('div')[0].style.backgroundImage.split('\"')[1].split('?')[0] );" +
-//"	        	console.log('photo %s = %s', j, photoDivs[j].getElementsByTagName('div')[0].style.backgroundImage.split('\"')[1].split('?')[0]); " +
 "	}; }; " + 
-"	arr; "
-//      });
-//    });
+"	arr "
 
       }, function (result) {
+      	if (result[0].length==0) {
+      		var b = document.createElement("b");
+		var t = document.createTextNode("No photos found");
+    		b.appendChild(t);
+    		document.body.appendChild(b);
+      	}
+      	else
 	for (i = 0; i < result[0].length; i++) { 
 	    var link = document.createElement('a');
 	    link.href = result[0][i] + '?s=4';
@@ -30,7 +34,5 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
 
-
-//  }, false);
 }, false);
 
