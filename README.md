@@ -18,18 +18,18 @@ See discussions
 
 This extension shows all photos of a thread(*conversation*) in a compact, easy-to-scroll list. It provides a quick one-click download for each image.
 To install:
- * download all files from this repository in a new folder
- * Chrome > Menu(3 dots) > More Tools > Extensions <br />
+ * [download files](https://github.com/helgasoft/Chrome-Ext-Gvoice/archive/master.zip) ► open .zip file ►  open the folder inside ►  delete 3 files starting with '.' and '_' ►  unzip the folder
+ * Chrome ►  Menu(3 dots) ►  More Tools ►  Extensions <br />
 	or just copy link *chrome://extensions/* into the address bar
  * Set "Developer Mode" to On (and keep it that way)
  * Click "LOAD UNPACKED" 
- * select the folder with the files from your drive and hit Ok
+ * select the folder with the files from your drive and hit Ok ► Chrome shows icon ![blue icon](gvoice.png?raw=true)
 
 ## Result
 
 Downloading photos and images from Google Voice with desktop Chrome becomes much easier.
 
 *Note:* If your photo files download automatically with extension '.jfif', here is a [fix for Windows 10](https://www.cnet.com/forums/discussions/jpeg-to-jfif-automatically-help):
-<br />Hit the Windows key > enter 'regedit' > regedit opens > HKEY_CLASSES_ROOT > MIME > DATABASE > Content type > image/jpeg > change "extension" value from .jfif to .jpg
+<br />Hit the Windows key ►  enter 'regedit' ►  regedit opens ►  HKEY_CLASSES_ROOT ►  MIME ►  DATABASE ►  Content type ►  image/jpeg ►  change "extension" value from .jfif to .jpg
 
 &emsp;
