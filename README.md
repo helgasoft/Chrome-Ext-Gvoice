@@ -27,9 +27,11 @@ To install:
 
 ## Result
 
-Downloading photos and images from Google Voice with desktop Chrome becomes much easier.
+Downloading photos and images sent to your Google Voice number becomes much easier.
 
-*Note:* If your photo files download automatically with extension '.jfif', here is a [fix for Windows 10](https://www.cnet.com/forums/discussions/jpeg-to-jfif-automatically-help):
-<br />Hit the Windows key ►  enter 'regedit' ►  regedit opens ►  HKEY_CLASSES_ROOT ►  MIME ►  DATABASE ►  Content type ►  image/jpeg ►  change "extension" value from .jfif to .jpg
+*Note:* If your photo files download automatically with extension *.jfif*, here is a [fix for Windows 10](https://www.cnet.com/forums/discussions/jpeg-to-jfif-automatically-help):
+<br />Hit the Windows key ►  enter 'regedit' ►  regedit opens ►  HKEY_CLASSES_ROOT ►  MIME ►  DATABASE ►  Content type ►  image/jpeg ►  change "extension" value from *.jfif* to *.jpg*
+
+*Note:* Photos you uploaded will be skipped, they will not be included in the list for download.
 
 &emsp;
