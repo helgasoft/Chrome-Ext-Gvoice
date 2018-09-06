@@ -7,15 +7,14 @@ document.addEventListener('DOMContentLoaded', function() {
           tabs[0].id,
           {code: 
 "	d = document; var arr=[];" + 
-"	msgs = d.getElementsByTagName('gv-photo-mms'); " +
-"	for(var i in msgs) { if (!msgs[i].getElementsByClassName) continue; " +
-"		photoDivs = msgs[i].getElementsByClassName('md-body-1'); " +
+"	imgs = d.getElementsByTagName('gv-image-attachment'); " +
+"	for(var i in imgs) { if (!imgs[i].getElementsByClassName) continue; " +
+"		photoDivs = imgs[i].getElementsByClassName('md-body-1'); " +
 "		for(var j in photoDivs) { if (!photoDivs[j].getElementsByTagName) continue;" +
 "			if (photoDivs[j].getElementsByTagName('img').length>0)" +
 "		        	arr.push(photoDivs[j].getElementsByTagName('img')[0].src);" +
 "			else if (photoDivs[j].getElementsByTagName('div').length>0)" +
 "				arr.push('https://' + window.location.hostname + photoDivs[j].getElementsByTagName('div')[0].style.backgroundImage.split('\"')[1].split('?')[0] );" +
-//"			arr.push('https://' + window.location.hostname + photoDivs[j].getElementsByTagName('div')[0].style.backgroundImage.split('\"')[1].split('?')[0] );" +
 "	}; }; " + 
 "	arr "
 

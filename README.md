@@ -12,7 +12,6 @@ See discussions
 [here](https://productforums.google.com/forum/#!topic/voice/O-R0duG2Xjo)
 .
 
-*Note: Chrome a Mobile Device does not support extensions* 
 
 ## Solution
 
@@ -21,7 +20,7 @@ To install:
  * [download files](https://github.com/helgasoft/Chrome-Ext-Gvoice/archive/master.zip) ► open .zip file ►  open the folder inside ►  delete 3 files starting with '.' and '_' ►  unzip the folder
  * Chrome ►  Menu(3 dots) ►  More Tools ►  Extensions <br />
 	or just copy link *chrome://extensions/* into the address bar
- * Set "Developer Mode" to On (and keep it that way)
+ * Set "Developer Mode" to On and keep it that way
  * Click "LOAD UNPACKED" 
  * select the folder with the files from your drive and hit Ok ► Chrome shows icon ![blue icon](gvoice.png?raw=true)
 
@@ -32,6 +31,7 @@ Downloading photos and images sent to your Google Voice number becomes much easi
 *Note:* If your photo files download automatically with extension *.jfif*, here is a [fix for Windows 10](https://www.cnet.com/forums/discussions/jpeg-to-jfif-automatically-help):
 <br />Hit the Windows key ►  enter 'regedit' ►  regedit opens ►  HKEY_CLASSES_ROOT ►  MIME ►  DATABASE ►  Content type ►  image/jpeg ►  change "extension" value from *.jfif* to *.jpg*
 
-*Note:* Photos you uploaded will be skipped, they will not be included in the list for download.
+*Note:* Legacy Google Voice cannot use this extension
+*Note:* Chrome on Mobile Devices does not support extensions
 
 &emsp;
