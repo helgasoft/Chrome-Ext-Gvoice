@@ -1,6 +1,6 @@
 {
 	"name": "Google Voice photos",
-	"version": "1.1",
+	"version": "1.2",
 	"description": "Download Google Voice attached photos the easy way",
 	"homepage_url": "https://github.com/helgasoft/Chrome-Ext-Gvoice",
 	"icons": { "16": "gvoice.png" },

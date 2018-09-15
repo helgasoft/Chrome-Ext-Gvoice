@@ -20,13 +20,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
       }, function (result) {
       	if (result[0].length==0) {
-      		var b = document.createElement("b");
-		var t = document.createTextNode("No photos found");
-    		b.appendChild(t);
-    		document.body.appendChild(b);
+      		document.getElementById('msg').innerHTML = "No photos found";
       	}
       	else {
-		var skipd = 0;	// number of own imgs
+      		document.getElementById('msg').innerHTML = "Click a photo to download instantly:";
+		var skipd = 0;	// number of own uploaded imgs
 		for (i = 0; i < result[0].length; i++) {
 		    if (result[0][i].endsWith('jpg')) {
 		    	skipd = skipd + 1;

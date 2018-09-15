@@ -32,6 +32,7 @@ Downloading photos and images sent to your Google Voice number becomes much easi
 <br />Hit the Windows key ►  enter 'regedit' ►  regedit opens ►  HKEY_CLASSES_ROOT ►  MIME ►  DATABASE ►  Content type ►  image/jpeg ►  change "extension" value from *.jfif* to *.jpg*
 
 *Note:* Legacy Google Voice cannot use this extension
+
 *Note:* Chrome on Mobile Devices does not support extensions
 
 &emsp;
