@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
       chrome.tabs.executeScript(
           tabs[0].id,
           {code: 
-"	d = document; var arr=[];" + 
-"	imgs = d.getElementsByTagName('gv-image-attachment'); " +
+"	var d = document, arr=[];" + 
+"	var imgs = d.getElementsByTagName('gv-image-attachment'); " +
 "	for(var i in imgs) { if (!imgs[i].getElementsByClassName) continue; " +
 "		photoDivs = imgs[i].getElementsByClassName('md-body-1'); " +
 "		for(var j in photoDivs) { if (!photoDivs[j].getElementsByTagName) continue;" +
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
 "	arr "
 
       }, function (result) {
-      	if (result[0].length==0) {
+      	if (result.length==0) {
       		document.getElementById('msg').innerHTML = "No photos found";
       	}
       	else {

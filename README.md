@@ -6,8 +6,8 @@ Chrome browser extension
 Your platform is Windows with the latest Chrome browser and you have a [Google Voice](https://voice.google.com/messages) phone number.
 Google Voice supports send/receive text messages with image/photo attachments. Downloading received photos, however, is inconvenient. You can download one image at a time with minimum 5 clicks (one to open, right-click, Save image as, Save, return arrow).
 See discussions 
-[here](https://productforums.google.com/forum/#!topic/voice/1jWD3JB9p-E) and
-[here](https://productforums.google.com/forum/#!topic/voice/6AB1v7nryTY) and
+[here](https://productforums.google.com/forum/#!topic/voice/1jWD3JB9p-E),
+[here](https://productforums.google.com/forum/#!topic/voice/6AB1v7nryTY),
 [here](https://productforums.google.com/forum/#!topic/voice/o0SaZtTsXtk) and
 [here](https://productforums.google.com/forum/#!topic/voice/O-R0duG2Xjo)
 .
@@ -17,12 +17,11 @@ See discussions
 
 This extension shows all photos of a thread(*conversation*) in a compact, easy-to-scroll list. It provides a quick one-click download for each image.
 To install:
- * [download files](https://github.com/helgasoft/Chrome-Ext-Gvoice/archive/master.zip) ► open .zip file ►  open the folder inside ►  delete 3 files starting with '.' and '_' ►  unzip the folder
- * Chrome ►  Menu(3 dots) ►  More Tools ►  Extensions <br />
-	or just copy link *chrome://extensions/* into the address bar
+ * [download files](https://helgasoft.github.io/Chrome-Ext-Gvoice/gvphoto.zip) ►  unzip to a local folder
+ * Chrome ►  Menu ![3 dots](three-dots.png?raw=true) ►  More Tools ►  Extensions (or just copy link *chrome://extensions/* into the address bar)
  * Set "Developer Mode" to On and keep it that way
- * Click "LOAD UNPACKED" 
- * select the folder with the files from your drive and hit Ok ► Chrome shows icon ![blue icon](gvoice.png?raw=true)
+ * Click button "Load Unpacked"
+ * Select the folder with the files and hit Ok ► Chrome will show icon ![blue icon](gvphoto16.png?raw=true) in extensions menu
 
 ## Result
 
