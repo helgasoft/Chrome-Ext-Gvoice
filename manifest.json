@@ -7,7 +7,7 @@
 		"16": "gvphoto16.png", 
 		"48": "gvphoto48.png",
 		"128": "gvphoto128.png"	},
-	"permissions": ["activeTab"],  
+	"permissions": ["activeTab","downloads"],  
 	"browser_action": {
 		"default_icon": "gvphoto16.png",
 		"default_popup": "popup.html"
