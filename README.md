@@ -12,6 +12,9 @@ See discussions
 [here](https://productforums.google.com/forum/#!topic/voice/O-R0duG2Xjo)
 .
 
+_Update:_ An additional issue is that any date information has to be manually
+associated with the photos, as that information is neither included in the
+filename nor the metadata.
 
 ## Solution
 
@@ -27,11 +30,19 @@ To install:
 
 Downloading photos and images sent to your Google Voice number becomes much easier.
 
+<!-- JFIF issue has been fixed.
 *Note:* If your photo files download automatically with extension *.jfif*, here is a [fix for Windows 10](https://www.cnet.com/forums/discussions/jpeg-to-jfif-automatically-help):
-<br />Hit the Windows key ►  enter 'regedit' ►  regedit opens ►  HKEY_CLASSES_ROOT ►  MIME ►  DATABASE ►  Content type ►  image/jpeg ►  change "extension" value from *.jfif* to *.jpg*
+<br />Hit the Windows key ►  enter 'regedit' ►  regedit opens ►
+HKEY_CLASSES_ROOT ►  MIME ►  DATABASE ►  Content type ►  image/jpeg ►  change
+"extension" value from *.jfif* to *.jpg* -->
+
+*Note:* The extension can only download photos that are currently loaded in the
+current tab. To get old photos, you need to scroll back to the older photos
+before hitting the extension button.
 
 *Note:* Legacy Google Voice cannot use this extension
 
 *Note:* Chrome on Mobile Devices does not support extensions
+
 
 &emsp;
