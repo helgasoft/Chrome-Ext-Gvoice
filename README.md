@@ -16,45 +16,36 @@ Two additional issues are that 1) any date information has to be manually
 associated with the photos, as that information is neither included in the
 filename nor the metadata, and 2) there is no easy way to download a large
 number of photos with one click.
+  
+<br />
 
 ## Solution
+<img src="gv.list.jpg" align="right" />
 
-This extension shows all photos of a thread(*conversation*) in a compact,
-easy-to-scroll list. It provides a quick one-click download for all images
-currently in view, and a list of clickable thumbnails to download individual
+This extension shows all photos of a thread (*conversation*) in a compact,
+easy-to-scroll list. It provides a quick one-click download for **all** images
+currently in view, and a list of clickable thumbnails to download **individual**
 images. Images are named according to the date they were sent or received.
+<br clear="right"/> 
 
-To install:
- * [download files](gvphoto.zip?raw=true) ►  unzip to a local folder
+**Installation**:
+ * [download ZIP](gvphoto.zip?raw=true) ►  unzip to a local folder
  * Chrome ►  Menu ![3 dots](src/three-dots.png?raw=true) ►  More Tools ►  Extensions (or just copy link *chrome://extensions/* into the address bar)
  * Set "Developer Mode" to On and keep it that way
  * Click button "Load Unpacked"
  * Select the folder with the files and hit Ok ► Chrome will show icon ![blue
-   icon](src/gvphoto16.png?raw=true) in extensions menu
+   icon](src/gvphoto16.png?raw=true) in extensions menu ![menu](gv.btn.png) 
 
-## Result
 
-Downloading photos and images sent to your Google Voice number becomes much easier.
+Downloading photos and images sent to your Google Voice number becomes much easier.   
 
-<<<<<<< Updated upstream
-<!-- JFIF issue has been fixed.
-*Note:* If your photo files download automatically with extension *.jfif*, here is a [fix for Windows 10](https://www.cnet.com/forums/discussions/jpeg-to-jfif-automatically-help):
-<br />Hit the Windows key ►  enter 'regedit' ►  regedit opens ►
-HKEY_CLASSES_ROOT ►  MIME ►  DATABASE ►  Content type ►  image/jpeg ►  change
-"extension" value from *.jfif* to *.jpg* -->
+Notes
 
-*Note:* The extension can only download photos that are currently loaded in the
-current tab. To get old photos, you need to scroll back to the older photos
+ * Only photos currently loaded are displayed. To see older photos, scroll back to the older photos
 before hitting the extension button.
-=======
-Notes:
- * If your photo files download automatically with extension *.jfif*, here is a [fix for Windows 10](https://www.cnet.com/forums/discussions/jpeg-to-jfif-automatically-help):
-<br />Hit the Windows key ►  enter 'regedit' ►  regedit opens ►  HKEY_CLASSES_ROOT ►  MIME ►  DATABASE ►  Content type ►  image/jpeg ►  change "extension" value from *.jfif* to *.jpg*
->>>>>>> Stashed changes
-
  * Legacy Google Voice cannot use this extension
  * Chrome on Mobile Devices does not support extensions
- * Other extensions, like AdGuard AdBlocker, could disable downloads
+ * Other extensions like AdGuard AdBlocker could disable downloads
 
 
 &emsp;
