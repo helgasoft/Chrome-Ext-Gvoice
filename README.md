@@ -36,6 +36,7 @@ To install:
 
 Downloading photos and images sent to your Google Voice number becomes much easier.
 
+<<<<<<< Updated upstream
 <!-- JFIF issue has been fixed.
 *Note:* If your photo files download automatically with extension *.jfif*, here is a [fix for Windows 10](https://www.cnet.com/forums/discussions/jpeg-to-jfif-automatically-help):
 <br />Hit the Windows key ►  enter 'regedit' ►  regedit opens ►
@@ -45,10 +46,15 @@ HKEY_CLASSES_ROOT ►  MIME ►  DATABASE ►  Content type ►  image/jpeg ► 
 *Note:* The extension can only download photos that are currently loaded in the
 current tab. To get old photos, you need to scroll back to the older photos
 before hitting the extension button.
+=======
+Notes:
+ * If your photo files download automatically with extension *.jfif*, here is a [fix for Windows 10](https://www.cnet.com/forums/discussions/jpeg-to-jfif-automatically-help):
+<br />Hit the Windows key ►  enter 'regedit' ►  regedit opens ►  HKEY_CLASSES_ROOT ►  MIME ►  DATABASE ►  Content type ►  image/jpeg ►  change "extension" value from *.jfif* to *.jpg*
+>>>>>>> Stashed changes
 
-*Note:* Legacy Google Voice cannot use this extension
-
-*Note:* Chrome on Mobile Devices does not support extensions
+ * Legacy Google Voice cannot use this extension
+ * Chrome on Mobile Devices does not support extensions
+ * Other extensions, like AdGuard AdBlocker, could disable downloads
 
 
 &emsp;
