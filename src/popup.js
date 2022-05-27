@@ -1,17 +1,13 @@
 
 document.addEventListener('DOMContentLoaded', function() {
-   //  var checkPageButton = document.getElementById('findPhotos');  <button id="findPhotos">Find all photos</button>
-   //  checkPageButton.addEventListener('click', function() {
 
    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
       chrome.tabs.executeScript( tabs[0].id, {file: 'script.js'}, function (result) {
-         if (result.length==0) {
-            document.getElementById('msg').innerHTML = "No photos found"
-         }
-         else {
-            document.getElementById('msg').innerHTML = result[0].length + " photos found. Click a thumbnail to download individual photos."
-
-            rslt = result[0]
+         document.getElementById('msg').innerHTML = "No photos found"
+      	 rslt = result[0];
+         if (rslt.length > 0) {
+            document.getElementById('msg').innerHTML = "<b>" + result[0].length + 
+            	" photos found.</b> <br/>Click a thumbnail to download individual photos."
             downloadList = [];
 
             for (i = 0; i < rslt.length; i++) {
@@ -39,17 +35,9 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.appendChild(link)
 
 
-            // As of Dec 2021, the commented-out code is not needed as far as I can tell.
-            // var skipd = 0;   // number of own uploaded imgs
-            for (i = 0; i < rslt.length; i++) {
-               //if (result[0][i].endsWith('jpg')) {
-               //   skipd = skipd + 1
-               //   continue
-               //}
-               
-               var l = document.createElement('a')
+            for (i = 0; i < rslt.length; i++) {               
+               const l = document.createElement('a')
                l.id = "download-photo-google-voice-" + i;
-
                l.href = rslt[i].url
                l.title = rslt[i].title
                // As of Dec 2021, the download option of <a> is only a very gentle suggestion. The actual work is done via the download api in the onclick function below.
@@ -58,14 +46,13 @@ document.addEventListener('DOMContentLoaded', function() {
                   chrome.downloads.download({url: this.href, filename: this.download, conflictAction: "uniquify"},function(id) {})
                   return false
                }
-               var ig = new Image(); ig.src=rslt[i].thumb; ig.style.maxHeight='128px'; ig.style.maxWidth='128px'
+               var ig = new Image();
+               ig.crossOrigin = 'Anonymous';
+               ig.src = rslt[i].thumb; 
+               ig.style.maxHeight = '128px'; ig.style.maxWidth = '128px'
                l.appendChild(ig)
                document.body.appendChild(l)
             }
-            //if (skipd>0) {
-            //   var t = document.createTextNode('Skipped '+skipd+' uploaded photos')
-            //   document.body.appendChild(t)
-            //}
          }
       })
    })
