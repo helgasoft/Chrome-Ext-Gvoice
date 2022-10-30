@@ -30,7 +30,7 @@ images. Images are named according to the date they were sent or received.
 
 **Installation**:
  * [download ZIP](gvphoto.zip?raw=true) ►  unzip to a local folder
- * Chrome ►  Menu ![3 dots](src/three-dots.png?raw=true) ►  More Tools ►  Extensions (or just copy link *chrome://extensions/* into the address bar)
+ * Chrome ►  Menu ![3 dots](three-dots.png?raw=true) ►  More Tools ►  Extensions (or just copy link *chrome://extensions/* into the address bar)
  * Set "Developer Mode" to On and keep it that way
  * Click button "Load Unpacked"
  * Select the folder with the files and hit Ok ► Chrome will show icon ![blue
