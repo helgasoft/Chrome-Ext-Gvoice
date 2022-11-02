@@ -1,3 +1,4 @@
+// popup.js - the only script
 
 async function getCurrentTab() {
   let queryOptions = { active: true, currentWindow: true };
@@ -10,7 +11,7 @@ const executeScript = (tabId, func) => new Promise(resolve => {
   chrome.scripting.executeScript({ target: { tabId }, func }, resolve)
 });
 
-function getImageURLs(){
+function getImageURLs(){   // not working as of Nov 1, 2022
 	arr=[];
   d = document;
   
@@ -57,12 +58,63 @@ function getImageURLs(){
    return(arr);
 }
 
+function getImageData() {
+   // this is v.1.3.1  script.js, still working fine Nov 1,2022
+   var d = document, arr=[];
+   var msgs = d.getElementsByTagName('gv-message-item')
+
+   for (msg of msgs){
+      if (!msg.getElementsByTagName) continue;
+
+      // Get the date. This method may be brittle, since it uses a hidden div that
+      // appears to be for accessibility purposes. Then again, the entire reason
+      // this extension exists is because Google provides no API for Voice.
+      divs = msg.getElementsByTagName('div');
+      dtstr = "";
+      for(dv of divs){
+         if(dv.outerText.match(/^Message by .*:/)){
+            dtstr = dv.outerText.split(',').slice(-2).join(',');
+            continue;
+         }
+      }
+
+      // Get the images.
+      imgs = msg.getElementsByTagName('gv-image-attachment');
+      for(im of imgs){
+         if (!im.getElementsByClassName) continue;
+
+         divs = im.getElementsByClassName('md-body-1')
+         for(dv of divs) {
+            if (!dv.getElementsByTagName) continue;
+
+            divs2 = dv.getElementsByTagName('div');
+            for(dv2 of divs2){
+
+               // Get the base image URL
+               imgUrl = dv2.style.backgroundImage.match(/^url\("(.+)\?s=3"\)$/);
+               
+               if(imgUrl){
+                  thm = 'https://' + window.location.hostname + imgUrl[1]
+                  dd = new Date(dtstr).toISOString(); // ='2022-01-21T17:56:00.000Z'
+                  dd = dd.replace(':00.000Z', '').replace('T','_').replace(':','.')
+                  // s=1 largest size, s=2 (or nothing) the smallest, s=3 preview size, s=4 medium size.
+                  //arr.push({datestr: dtstr, thumb: thm, url: thm + '?s=1'} )
+                  arr.push({fullsize: thm+"?s=1", thumbnail: thm, 
+                            date: dd, filename: dd+".jpg"});
+               }
+            }
+         }
+      }
+   }
+   return(arr);
+}
+
 function makeThumbnails(urls){
    for(u of urls){
       const l = document.createElement('a')
       l.href = u.fullsize
       l.title = "Photo sent on "+u.date
-      l.download = u.filename; // a.download is just a suggestion
+      l.download = u.filename;
       l.onclick = function(){
          chrome.downloads.download({url: u.fullsize, filename: u.filename, conflictAction: "uniquify"});
          return false
@@ -86,7 +138,7 @@ async function downloadAll(urls){
 document.addEventListener('DOMContentLoaded', async function() {
    let msg = document.getElementById('msg');
    let tab = await getCurrentTab();
-   const [{result: urls}] = await executeScript(tab.id, getImageURLs);
+   const [{result: urls}] = await executeScript(tab.id, getImageData); //getImageURLs);
 
    msg.innerHTML = "<b>" + urls.length + " photos found.</b> <br/>Click a thumbnail to download individual photos."
 
@@ -102,5 +154,14 @@ document.addEventListener('DOMContentLoaded', async function() {
       return false
    }
    document.body.appendChild(link);
+   
+   br = document.createElement("span");
+   br.innerHTML = "<br/>";
+   document.body.appendChild(br);
+
    makeThumbnails(urls);
 })
+
+/*  TODO:
+   - add sender's name to the filename for download, could be optional (checkbox)
+*/
