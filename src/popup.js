@@ -1,5 +1,9 @@
-// popup.js - the only script
+/* popup.js - the only script
 
+https://developer.chrome.com/docs/extensions/reference/scripting/#method-executeScript
+https://stackoverflow.com/questions/4532236/how-to-access-the-webpage-dom-html-from-an-extension-popup-or-background-script/67227376#67227376
+
+*/
 async function getCurrentTab() {
   let queryOptions = { active: true, currentWindow: true };
   let [tab] = await chrome.tabs.query(queryOptions);
@@ -8,61 +12,65 @@ async function getCurrentTab() {
 
 // Got this from https://stackoverflow.com/questions/14790389/return-value-from-chrome-tabs-executescript
 const executeScript = (tabId, func) => new Promise(resolve => {
-  chrome.scripting.executeScript({ target: { tabId }, func }, resolve)
+//  chrome.scripting.executeScript({ target: { tabId }, func }, resolve)
+  alert(tabId);
+  chrome.scripting.executeScript({ target: { tabId: tabId }, func: func }, resolve)
 });
 
-function getImageURLs(){   // not working as of Nov 1, 2022
-	arr=[];
+function getImageURLs(){
+/*
+	working again on Nov 22, 2022
+	not working as of Nov 1, 2022
+*/
+  arr=[];
   d = document;
-  
-	var msgs = d.getElementsByTagName('gv-text-message-item')
+  var msgs = d.getElementsByTagName('gv-text-message-item')
   //console.log("Found " + msgs.length + " messages");
-	for(msg of msgs){
-	   if (!msg.getElementsByTagName) continue
+  for(msg of msgs){
+	if (!msg.getElementsByTagName) continue
 
-	   // Get the date. This method may be brittle, since it uses a hidden div that
-	   // appears to be for accessibility purposes. Then again, the entire reason
-	   // this extension exists is because Google provides no API for Voice.
-	   divs = msg.getElementsByTagName('div')
-	   dtstr = "photo"
-      dt = [new Date()];
-	   for(dv of divs){
-	   	 mat = dv.outerText.match(/^[ ]*Message from .*[aA]ttachment.*, *([^,]+), *([^,\.]+)[ \.]*/);
-	      if(mat){
-           console.log("MATCH: "+mat[1]+", "+mat[2])
+	// Get the date. This method may be brittle, since it uses a hidden div that
+	// appears to be for accessibility purposes. Then again, the entire reason
+	// this extension exists is because Google provides no API for Voice.
+	divs = msg.getElementsByTagName('div')
+	dtstr = "photo"
+	dt = [new Date()];
+	for(dv of divs){
+	  mat = dv.outerText.match(/^[ ]*Message from .*[aA]ttachment.*, *([^,]+), *([^,\.]+)[ \.]*/);
+	  if(mat){
+		console.log("MATCH: "+mat[1]+", "+mat[2])
 	        dt.push(new Date(mat[1]+", "+mat[2]));
 	        // I don't break here because I would like to get the last date, not the first.
-	      }
-	   }
-      // Get the last date. If no date was found, use the current date.
-      dt = dt[dt.length - 1];
-
-	   // Get the images.
-	   imgs = msg.getElementsByTagName('gv-image-attachment')
-	   for(im of imgs){
-	   	  imgs2 = im.getElementsByTagName('img');
-        for(im2 of imgs2){
-        	mat2 = im2.src.match(/^(.+)\?s=3$/)
-        	if(mat2){
-        		url = mat2[1];
-            // s=1 is the largest size, I think. s=2 (or nothing) is the smallest, s=3 is a preview size, and s=4 is a medium size.
-            
-	         dtstr = dt.getFullYear() + "-" + (""+(dt.getMonth()+1)).padStart(2,'0') + "-" + (""+(dt.getDate())).padStart(2,'0');
-            console.log(dtstr+".jpg");
-            itm = {fullsize: url+"?s=1", thumbnail: url+"?s=2", date: dt.toISOString(), filename: dtstr+".jpg"};
-            arr.push(itm);
-        	}
-        }
-	   }
+	  }
 	}
-   return(arr);
+	// Get the last date. If no date was found, use the current date.
+	dt = dt[dt.length - 1];
+
+	// Get the images.
+	imgs = msg.getElementsByTagName('gv-image-attachment')
+	for(im of imgs){
+	  imgs2 = im.getElementsByTagName('img');
+	  for(im2 of imgs2){
+	    mat2 = im2.src.match(/^(.+)\?s=3$/)
+	    if(mat2){
+	      url = mat2[1];
+	      // s=1 is the largest size, I think. s=2 (or nothing) is the smallest, s=3 is a preview size, and s=4 is a medium size.
+	      dtstr = dt.getFullYear() + "-" + (""+(dt.getMonth()+1)).padStart(2,'0') + "-" + (""+(dt.getDate())).padStart(2,'0');
+	      console.log(dtstr+".jpg");
+	      itm = {fullsize: url+"?s=1", thumbnail: url+"?s=2", date: dt.toISOString(), filename: dtstr+".jpg"};
+	      arr.push(itm);
+	    }
+	  }
+	}
+  }
+  return(arr);
 }
 
 function getImageData() {
-   // this is v.1.3.1  script.js, still working fine Nov 1,2022
+   // this is v.1.3.1  script.js, still working fine Nov 1,2022 ... but not on Nov 22, 2022
    var d = document, arr=[];
    var msgs = d.getElementsByTagName('gv-message-item')
-
+debugger;
    for (msg of msgs){
       if (!msg.getElementsByTagName) continue;
 
@@ -137,8 +145,26 @@ async function downloadAll(urls){
 
 document.addEventListener('DOMContentLoaded', async function() {
    let msg = document.getElementById('msg');
+   // const tabId = getTabId();  // doesnt work
+	
    let tab = await getCurrentTab();
-   const [{result: urls}] = await executeScript(tab.id, getImageData); //getImageURLs);
+   // works but redundant, lets do it directly  11/22/22
+   //const [{result: urls}] = await executeScript(tab.id, getImageURLs);
+
+   let res;
+   try {
+     res = await chrome.scripting.executeScript({
+	target: {tabId: tab.id},
+	func: getImageURLs
+	//function: getImageData
+	//files: ['old.script.131.js']
+     });
+   } catch (e) {
+     console.warn(e.message || e);
+     return;
+   }
+   //alert(JSON.stringify(res, null, 2)); 
+   let urls = res[0].result;
 
    msg.innerHTML = "<b>" + urls.length + " photos found.</b> <br/>Click a thumbnail to download individual photos."
 
